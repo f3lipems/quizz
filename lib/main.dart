@@ -4,8 +4,15 @@ void main() {
   runApp(const MainApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MainAppState extends State<MainApp> {
+  var selectedAnswer = 0;
+
+  void reply() {
+    setState(() {
+      selectedAnswer++;
+    });
+    print(selectedAnswer);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,31 +23,36 @@ class MainApp extends StatelessWidget {
 
     return MaterialApp(
       home: Scaffold(
-      
         appBar: AppBar(
           title: const Text('Quizz'),
         ),
-
         body: Column(
           children: [
-            Text(questions.elementAt(0)),
-            const MaterialButton(
-              onPressed: null,
-              child: Text('Answer 1'),
+            Text(questions.elementAt(selectedAnswer)),
+            MaterialButton(
+              onPressed: reply,
+              child: const Text('Answer 1'),
             ),
-            const MaterialButton(
-              onPressed: null,
+            MaterialButton(
+              onPressed: reply,
               child: Text('Answer 2'),
             ),
-            const MaterialButton(
-              onPressed: null,
+            MaterialButton(
+              onPressed: reply,
               child: Text('Answer 3'),
             ),
           ],
         ),
-
-
       ),
     );
+  }
+}
+
+class MainApp extends StatefulWidget {
+  const MainApp({super.key});
+
+  @override
+  State<StatefulWidget> createState() {
+    return MainAppState();
   }
 }
