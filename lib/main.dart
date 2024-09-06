@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
+import './question.dart';
 
 void main() {
   runApp(const MainApp());
 }
 
-class MainAppState extends State<MainApp> {
-  var selectedAnswer = 0;
+class MainApp extends StatefulWidget {
+  const MainApp({super.key});
 
-  void reply() {
+  @override
+  State<StatefulWidget> createState() {
+    return _MainAppState();
+  }
+}
+
+class _MainAppState extends State<MainApp> {
+  var _selectedAnswer = 0;
+
+  void _reply() {
     setState(() {
-      selectedAnswer++;
+      _selectedAnswer++;
     });
-    print(selectedAnswer);
+    print(_selectedAnswer);
   }
 
   @override
@@ -28,31 +38,22 @@ class MainAppState extends State<MainApp> {
         ),
         body: Column(
           children: [
-            Text(questions.elementAt(selectedAnswer)),
+            Question(questionText: questions.elementAt(_selectedAnswer)),
             MaterialButton(
-              onPressed: reply,
+              onPressed: _reply,
               child: const Text('Answer 1'),
             ),
             MaterialButton(
-              onPressed: reply,
+              onPressed: _reply,
               child: Text('Answer 2'),
             ),
             MaterialButton(
-              onPressed: reply,
+              onPressed: _reply,
               child: Text('Answer 3'),
             ),
           ],
         ),
       ),
     );
-  }
-}
-
-class MainApp extends StatefulWidget {
-  const MainApp({super.key});
-
-  @override
-  State<StatefulWidget> createState() {
-    return MainAppState();
   }
 }
