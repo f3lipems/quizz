@@ -13,8 +13,8 @@ class Reply extends StatelessWidget {
       child: MaterialButton(
         color: Colors.blue,
         textColor: Colors.white,
-        child: Text(replyLabel),
         onPressed: onSelected,
+        child: Text(replyLabel),
       ),
     );
   }

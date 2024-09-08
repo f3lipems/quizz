@@ -16,13 +16,13 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  var _selectedAnswer = 0;
+  var _selectedQuestion = 0;
 
   void _reply() {
     setState(() {
-      _selectedAnswer++;
+      _selectedQuestion++;
     });
-    print(_selectedAnswer);
+    print(_selectedQuestion);
   }
 
   @override
@@ -30,17 +30,20 @@ class _MainAppState extends State<MainApp> {
     final List<Map<String, Object>> questions = [
       {
         'text': 'Wath is your favorite collor?',
-        'answer': ['Black', 'Red', 'Green', 'White'],
+        'answers': ['Black', 'Red', 'Green', 'White'],
       },
       {
         'text': 'Wath is your favorite pet?',
-        'answer': ['Rabit', 'Sneak', 'Elephant', 'Lion'],
+        'answers': ['Rabit', 'Sneak', 'Elephant', 'Lion'],
       },
       {
         'text': 'What is your favorite programing language?',
-        'answer': ['Dart', 'JS', 'Python', 'Java']
+        'answers': ['Dart', 'JS', 'Python', 'Java']
       }
     ];
+
+    List<String> answers = questions[_selectedQuestion].cast()['answers'];
+    List<Widget> answersWidget = answers.map((t) => Reply(replyLabel: t, onSelected: _reply)).toList();
 
     return MaterialApp(
       home: Scaffold(
@@ -49,10 +52,8 @@ class _MainAppState extends State<MainApp> {
         ),
         body: Column(
           children: [
-            Question(questionText: questions[_selectedAnswer]['text'].toString()),
-            Reply(replyLabel: 'Answer 1', onSelected: _reply),
-            Reply(replyLabel: 'Answer 2', onSelected: _reply),
-            Reply(replyLabel: 'Answer 3', onSelected: _reply),
+            Question(questionText: questions[_selectedQuestion]['text'].toString()),
+            ...answersWidget
           ],
         ),
       ),
