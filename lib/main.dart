@@ -66,7 +66,12 @@ class _MainAppState extends State<MainApp> {
                   ...answersWidget
                 ],
               )
-            : null,
+            : const Center(
+                child: Text(
+                  'Congratulations!',
+                  style: TextStyle(fontSize: 28),
+                ),
+              ),
       ),
     );
   }
