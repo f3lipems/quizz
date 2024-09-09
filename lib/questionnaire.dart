@@ -20,14 +20,16 @@ class Questionnaire extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> answers = hasSelectedQuestion
+    List<Map<String, Object>> answers = hasSelectedQuestion
         ? questions[selectedQuestion].cast()['answers']
+            as List<Map<String, Object>>
         : [];
 
     return Column(
       children: [
         Question(questionText: questions[selectedQuestion]['text'].toString()),
-        ...answers.map((t) => Reply(replyLabel: t, onSelected: reply))
+        ...answers.map((res) =>
+            Reply(replyLabel: res['text'] as String, onSelected: reply))
       ],
     );
   }

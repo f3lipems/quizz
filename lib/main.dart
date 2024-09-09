@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import './question.dart';
-import './reply.dart';
 import './result.dart';
 import './questionnaire.dart';
 
@@ -22,15 +20,30 @@ class _MainAppState extends State<MainApp> {
   final List<Map<String, Object>> _questions = const [
     {
       'text': 'Wath is your favorite collor?',
-      'answers': ['Black', 'Red', 'Green', 'White'],
+      'answers': [
+        {'text': 'Black', 'score': 7},
+        {'text': 'Red', 'score': 3},
+        {'text': 'Green', 'score': 5},
+        {'text': 'White', 'score': 9}
+      ],
     },
     {
       'text': 'Wath is your favorite pet?',
-      'answers': ['Rabit', 'Sneak', 'Elephant', 'Lion'],
+      'answers': [
+        {'text': 'Rabbit', 'score': 2},
+        {'text': 'Snak', 'score': 4},
+        {'text': 'Elephant', 'score': 6},
+        {'text': 'Lion,', 'score': 8}
+      ],
     },
     {
       'text': 'What is your favorite programing language?',
-      'answers': ['Dart', 'JS', 'Python', 'Java']
+      'answers': [
+        { 'text': 'Dart', 'score': 10}, 
+        { 'text': 'JS', 'score': 5}, 
+        { 'text': 'Python', 'score': 8}, 
+        { 'text': 'Java', 'score': 3}
+      ]
     }
   ];
 
