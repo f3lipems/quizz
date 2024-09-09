@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './question.dart';
 import './reply.dart';
+import './result.dart';
 
 void main() {
   runApp(const MainApp());
@@ -54,25 +55,19 @@ class _MainAppState extends State<MainApp> {
 
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Quizz'),
-        ),
-        body: hasSelectedQuestion
-            ? Column(
-                children: [
-                  Question(
-                      questionText:
-                          _questions[_selectedQuestion]['text'].toString()),
-                  ...answersWidget
-                ],
-              )
-            : const Center(
-                child: Text(
-                  'Congratulations!',
-                  style: TextStyle(fontSize: 28),
-                ),
-              ),
-      ),
+          appBar: AppBar(
+            title: const Text('Quizz'),
+          ),
+          body: hasSelectedQuestion
+              ? Column(
+                  children: [
+                    Question(
+                        questionText:
+                            _questions[_selectedQuestion]['text'].toString()),
+                    ...answersWidget
+                  ],
+                )
+              : const Result()),
     );
   }
 }
