@@ -74,7 +74,7 @@ class _MainAppState extends State<MainApp> {
                   selectedQuestion: _selectedQuestion,
                   reply: _reply,
                 )
-              : const Result()),
+              : Result(score: _totalScore)),
     );
   }
 }
