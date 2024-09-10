@@ -40,10 +40,10 @@ class _MainAppState extends State<MainApp> {
     {
       'text': 'What is your favorite programing language?',
       'answers': [
-        { 'text': 'Dart', 'score': 10}, 
-        { 'text': 'JS', 'score': 5}, 
-        { 'text': 'Python', 'score': 8}, 
-        { 'text': 'Java', 'score': 3}
+        {'text': 'Dart', 'score': 10},
+        {'text': 'JS', 'score': 5},
+        {'text': 'Python', 'score': 8},
+        {'text': 'Java', 'score': 3}
       ]
     }
   ];
@@ -55,6 +55,13 @@ class _MainAppState extends State<MainApp> {
         _totalScore += score;
       });
     }
+  }
+
+  void restartQuestionnaire() {
+    setState(() {
+      _selectedQuestion = 0;
+      _totalScore = 0;
+    });
   }
 
   bool get hasSelectedQuestion {
@@ -74,7 +81,10 @@ class _MainAppState extends State<MainApp> {
                   selectedQuestion: _selectedQuestion,
                   reply: _reply,
                 )
-              : Result(score: _totalScore)),
+              : Result(
+                  score: _totalScore,
+                  restartQuestionnaire: restartQuestionnaire,
+                )),
     );
   }
 }
