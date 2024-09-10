@@ -17,6 +17,7 @@ class MainApp extends StatefulWidget {
 
 class _MainAppState extends State<MainApp> {
   var _selectedQuestion = 0;
+  var _totalScore = 0;
   final List<Map<String, Object>> _questions = const [
     {
       'text': 'Wath is your favorite collor?',
@@ -47,10 +48,11 @@ class _MainAppState extends State<MainApp> {
     }
   ];
 
-  void _reply() {
+  void _reply(int score) {
     if (hasSelectedQuestion) {
       setState(() {
         _selectedQuestion++;
+        _totalScore += score;
       });
     }
   }

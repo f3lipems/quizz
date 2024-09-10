@@ -12,7 +12,7 @@ class Questionnaire extends StatelessWidget {
 
   final List<Map<String, Object>> questions;
   final int selectedQuestion;
-  final void Function() reply;
+  final void Function(int score) reply;
 
   bool get hasSelectedQuestion {
     return selectedQuestion < questions.length;
@@ -28,8 +28,10 @@ class Questionnaire extends StatelessWidget {
     return Column(
       children: [
         Question(questionText: questions[selectedQuestion]['text'].toString()),
-        ...answers.map((res) =>
-            Reply(replyLabel: res['text'] as String, onSelected: reply))
+        ...answers.map((res) {
+            return Reply(replyLabel: res['text'] as String, onSelected: () => reply(int.parse(res['score'].toString())));
+          }
+        )
       ],
     );
   }
